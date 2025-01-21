@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Client</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/editare_client.css') }}">
+</head>
+<body>
+    <h1>Editare Client</h1>
+
+    <form action="{{ url_for('update_client', client_id=client[0]) }}" method="post">
+        <label for="nume">Nume:</label>
+        <input type="text" id="nume" name="nume" value="{{ client[1] }}" required>
+        
+        <label for="prenume">Prenume:</label>
+        <input type="text" id="prenume" name="prenume" value="{{ client[2] }}" required>
+        
+        <label for="strada">Strada:</label>
+        <input type="text" id="strada" name="strada" value="{{ client[3] }}" required>
+        
+        <label for="numar">Numar:</label>
+        <input type="text" id="numar" name="numar" value="{{ client[4] }}" required>
+        
+        <label for="oras">Oraș:</label>
+        <input type="text" id="oras" name="oras" value="{{ client[5] }}" required>
+        
+        <label for="judet">Județ:</label>
+        <input type="text" id="judet" name="judet" value="{{ client[6] }}" required>
+        
+        <label for="telefon">Telefon:</label>
+        <input type="text" id="telefon" name="telefon" value="{{ client[7] }}" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ client[8] }}" required>
+        
+        <button type="submit">Salvează Modificările</button>
+    </form>
+
+    <a href="{{ url_for('clienti') }}">Înapoi la lista de clienți</a>
+</body>
+</html>

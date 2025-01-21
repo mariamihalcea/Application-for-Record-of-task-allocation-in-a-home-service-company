@@ -1,0 +1,100 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column; /* Organizează elementele pe verticală */
+    align-items: center;
+    justify-content: flex-start; /* Poziționează elementele de sus */
+    min-height: 100vh; /* Înălțimea completă a paginii */
+    margin: 0;
+    padding: 20px; /* Spațiu în jurul conținutului */
+    background-color: #fff;
+}
+
+
+.container {
+    text-align: center; /* Aliniere centrală a textului */
+    margin-bottom: 20px; /* Spațiu între container și tabel */
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%; /* Ajustare pe lățimea paginii */
+    max-width: 1200px; /* Limitare a lățimii maxime */
+}
+
+h1 {
+    color: green;
+    font-size: 2.5rem;
+    margin-bottom: 10px; /* Spațiu între titlu și următorul element */
+    text-align: center;
+}
+
+
+h2 {
+    font-size: 1.8rem;
+    color: #333;
+    margin-bottom: 20px; /* Spațiu între subtitlu și tabel */
+    text-align: center;
+}
+
+
+table {
+    border-collapse: collapse; 
+    width: 90%; 
+    margin: 0 auto; 
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden; 
+}
+
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+    text-align: left;
+}
+
+
+th {
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+table caption {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #45a049;
+}

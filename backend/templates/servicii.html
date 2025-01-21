@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/servicii.css') }}">
+</head>
+<body>
+    <h1>Services</h1>
+    <h2>Services data</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Denumire</th>
+                <th>Descriere</th>
+                <th>Pret</th>
+                <th>Acțiuni</th> 
+            </tr>
+        </thead>
+        <tbody>
+            {% for serviciu in servicii %}
+            <tr>
+                <td>{{ serviciu[1] }}</td>
+                <td>{{ serviciu[2] }}</td>
+                <td>{{ serviciu[3] }}</td>
+                <td>
+                    <a href="{{ url_for('update_service', service_id=serviciu[0]) }}">
+                        <button class="btn-edit">Editeaza</button>
+                    </a>
+                    <form action="{{ url_for('delete_service', service_id=serviciu[0]) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn-delete" onclick="return confirm('Sigur vrei să ștergi acest serviciu?')">Șterge</button>
+                    </form>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Formular pentru adăugarea unui serviciu nou -->
+    <form action="/add_service" method="post">
+        <label for="denumire">Denumire Serviciu:</label>
+        <input type="text" id="denumire" name="denumire" required>
+        <label for="descriere">Descriere Serviciu:</label>
+        <input type="text" id="descriere" name="descriere" required>
+        <label for="pret">Pret Serviciu:</label>
+        <input type="decimal" id="pret" name="pret" required>
+        <button type="submit">Adaugă Serviciu</button>
+    </form>
+
+    
+    <form action="{{ url_for('comenzi_client_serviciu') }}" method="GET">
+        <label for="servicii">Selectează Serviciu:</label>
+        <select name="servicii" id="servicii">
+            {% for serviciu in servicii %}
+                <option value="{{ serviciu[1] }}">{{ serviciu[1] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Caută Comenzi pentru Serviciu</button>
+    </form>
+
+    <a href="{{ url_for('auth') }}">
+        <button class="button">Acasa</button>
+    </a>
+</body>
+</html>

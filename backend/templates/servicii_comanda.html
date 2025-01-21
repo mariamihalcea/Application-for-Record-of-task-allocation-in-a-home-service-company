@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicii Comanda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/servicii_comanda.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Servicii Asociate Comenzii</h1>
+        <p>Detalii despre serviciile comandate</p>
+    </header>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul class="flash-messages">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+   
+    
+    <h3>Servicii asociate cu această comandă:</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Denumire Serviciu</th>
+                <th>Pret</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for serviciu in servicii %}
+                <tr>
+                    <td>{{ serviciu[1] }}</td>
+                    <td>{{ serviciu[2] }}</td>
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    <form method="POST">
+        <label for="servicii">Adaugă Servicii:</label>
+        <select name="servicii" multiple>
+            {% for serviciu in lista_servicii %}
+                <option value="{{ serviciu[0] }}">{{ serviciu[1] }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Adaugă Servicii</button>
+    </form>
+    </section>
+    <a href="{{ url_for('comenzi') }}">
+        <button class="button">Inapoi la lista de comenzi</button>
+    </a>
+</body>
+</html>

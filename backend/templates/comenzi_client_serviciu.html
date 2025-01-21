@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comenzi Client cu Serviciu Specific</title>
+    <style>
+        /* Stiluri generale pentru întreaga pagină */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Titlu */
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        /* Tabel */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        /* Stil pentru capul tabelului */
+        thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        /* Celule din tabel */
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        /* Efect de hover pentru rândurile tabelului */
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Mesajul de eroare, când nu există comenzi */
+        p {
+            text-align: center;
+            font-size: 18px;
+            color: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Comenzi pentru serviciul: {{ nume_serviciu }}</h2>
+
+        {% if comenzi %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nume Client</th>
+                        <th>Prenume Client</th>
+                        <th>Denumire Serviciu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for comanda in comenzi %}
+                        <tr>
+        
+                            <td>{{ comanda[3] }}</td>
+                            <td>{{ comanda[4] }}</td>
+                            <td>{{ comanda[5] }}</td>
+                        
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nu există comenzi pentru serviciul "{{ nume_serviciu }}" pentru clienți.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

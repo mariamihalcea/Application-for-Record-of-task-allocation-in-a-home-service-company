@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/angajat.css') }}">
+</head>
+<body>
+    <h1>Employee Page</h1>
+    <h2>Date angajati</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nume</th>
+                <th>Prenume</th>
+                <th>Sex</th>
+                <th>Specializare</th>
+                <th>Disponibilitate</th>
+                <th>Email</th>
+                <th>Acțiune</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for angajat in angajati %}
+            <tr>
+                <td>{{ angajat[1] }}</td>
+                <td>{{ angajat[2] }}</td>
+                <td>{{ angajat[3] }}</td>
+                <td>{{ angajat[4] }}</td>
+                <td>{{ angajat[5] }}</td>
+                <td>{{ angajat[6] }}</td>
+                <td>
+                    <form action="{{ url_for('delete_employee', id_angajat=angajat[0]) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn-delete" onclick="return confirm('Sigur vrei să ștergi acest angajat?')">Șterge</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="button-container">
+        <a href="{{ url_for('taskuri_angajat') }}">
+            <button class="button">Angajati care au finalizat taskuri</button>
+        </a>
+        <a href="{{ url_for('angajati_disponibili') }}">
+            <button class="button">Angajati Disponibili</button>
+        </a>
+        <a href="{{ url_for('angajati_comenzi_peste_media') }}">
+            <button class="button">Angajatii lunii</button>
+        </a>
+        <a href="{{ url_for('angajati_fara_comenzi') }}">
+            <button class="button">Angajatii noi</button>
+        </a>
+        <a href="{{ url_for('auth') }}">
+            <button class="button">Acasa</button>
+        </a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaugă Comanda</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/adauga_comanda.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Adaugă Comanda</h1>
+        <form action="{{ url_for('adauga_comanda') }}" method="POST">
+            <label for="id_client">Client:</label>
+            <select name="id_client" required>
+                {% for client in clienti %}
+                    <option value="{{ client[0] }}">{{ client[1] }}</option>
+                {% endfor %}
+            </select>
+
+            <label for="data_asignare">Data Asignare:</label>
+            <input type="date" name="data_asignare" required>
+
+            <label for="data_finalizare">Data Finalizare:</label>
+            <input type="date" name="data_finalizare">
+
+            <label for="status_id">Status:</label>
+            <select name="status_id" required>
+                <option value="1">In asteptare</option>
+                <option value="2">In desfasurare</option>
+                <option value="3">Finalizat</option>
+            </select>
+
+            <input type="submit" value="Adaugă Comanda">
+        </form>
+    </div>
+</body>
+</html>

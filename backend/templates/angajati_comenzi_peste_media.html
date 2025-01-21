@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angajați cu comenzi de preț mare</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+     
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+     
+        h2 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+ 
+        thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+  
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+    
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        p {
+            text-align: center;
+            font-size: 18px;
+            color: #ff5722;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Angajați care au lucrat la comenzi cu preț total mai mare decât media prețurilor comenzilor</h2>
+
+        {% if angajati %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nume Angajat</th>
+                        <th>Prenume Angajat</th>
+                        <th>Pret Total Comandă</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for angajat in angajati %}
+                        <tr>
+                            <td>{{ angajat[0] }}</td>
+                            <td>{{ angajat[1] }}</td>
+                            <td>{{ angajat[3] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nu există angajați care să fi lucrat la comenzi cu preț mai mare decât media prețurilor comenzilor.</p>
+        {% endif %}
+        
+    </div>
+</body>
+</html>

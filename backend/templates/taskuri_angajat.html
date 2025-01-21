@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taskuri Angajat</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/taskuri_angajat.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Angajati care au finalizat taskuri</h2>
+
+        {% if taskuri %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nume Angajat</th>
+                        <th>Prenume Angajat</th>
+                        <th>Data Asignare</th>
+                        <th>Data Finalizare</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in taskuri %}
+                        <tr>
+                            <td>{{ task[0] }}</td>
+                            <td>{{ task[1] }}</td>
+                            <td>{{ task[3] }}</td>
+                            <td>{{ task[4] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Nu există taskuri finalizate pentru angajați.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

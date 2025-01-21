@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+    <h1>Welcome to our website!</h1>
+    <h2>What do you want to see?</h2>
+
+ 
+    <a href="{{ url_for('angajat') }}">
+        <button class="btn-angajati">Employees data</button>
+    </a>
+
+    <a href="{{ url_for('clienti') }}">
+        <button class="btn-clienti">Clients data</button>
+    </a>
+  
+    <a href="{{ url_for('comenzi') }}">
+        <button class="btn-comenzi">Orders data</button>
+    </a>
+
+    <a href="{{ url_for('servicii') }}">
+        <button class="btn-servicii">Services data</button>
+    </a>
+</body>
+</html>
